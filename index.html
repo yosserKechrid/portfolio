@@ -1,0 +1,752 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yosser Kechrid - Software Engineer Portfolio</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #8b5cf6;
+            --accent: #f97316;
+            --background: #fafafa;
+            --foreground: #262626;
+            --card: #ffffff;
+            --muted: #f5f5f5;
+            --muted-foreground: #737373;
+            --border: #e5e5e5;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background-color: var(--background);
+            color: var(--foreground);
+            line-height: 1.6;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background-color: rgba(250, 250, 250, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border);
+            z-index: 50;
+        }
+
+        .nav-container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 64px;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            background: linear-gradient(to right, var(--primary), var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .nav-menu {
+            display: none;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-menu.active {
+            display: flex;
+        }
+
+        .nav-menu a {
+            color: var(--foreground);
+            text-decoration: none;
+            cursor: pointer;
+            transition: color 0.3s;
+        }
+
+        .nav-menu a:hover {
+            color: var(--primary);
+        }
+
+        .menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--foreground);
+        }
+
+        @media (max-width: 768px) {
+            .nav-menu {
+                display: none;
+                position: absolute;
+                top: 64px;
+                left: 0;
+                right: 0;
+                background-color: var(--background);
+                flex-direction: column;
+                padding: 1rem;
+                gap: 0.5rem;
+                border-bottom: 1px solid var(--border);
+            }
+
+            .nav-menu.active {
+                display: flex;
+            }
+
+            .menu-toggle {
+                display: block;
+            }
+
+            .nav-menu a {
+                display: block;
+                padding: 0.5rem 0;
+            }
+        }
+
+        /* Hero Section */
+        #home {
+            padding-top: 8rem;
+            padding-bottom: 5rem;
+            padding-left: 1.5rem;
+            padding-right: 1.5rem;
+            max-width: 1280px;
+            margin: 0 auto;
+            animation: fadeInUp 0.6s ease-out;
+        }
+
+        .hero-content {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        h1 {
+            font-size: 3.5rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+            line-height: 1.2;
+        }
+
+        .hero-title {
+            background: linear-gradient(to right, var(--primary), var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-subtitle {
+            font-size: 1.25rem;
+            color: var(--muted-foreground);
+            margin-bottom: 0.5rem;
+        }
+
+        .hero-description {
+            font-size: 1.125rem;
+            color: var(--muted-foreground);
+            max-width: 42rem;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            padding-top: 1rem;
+            flex-wrap: wrap;
+        }
+
+        button {
+            padding: 0.75rem 1.5rem;
+            border: none;
+            border-radius: 0.5rem;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-weight: 500;
+        }
+
+        .btn-primary {
+            background-color: var(--primary);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background-color: #7c3aed;
+            transform: translateY(-2px);
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            color: var(--foreground);
+            border: 1px solid var(--border);
+        }
+
+        .btn-outline:hover {
+            background-color: var(--muted);
+            border-color: var(--primary);
+        }
+
+        .hero-socials {
+            display: flex;
+            gap: 1rem;
+            padding-top: 1rem;
+        }
+
+        .social-link {
+            width: 24px;
+            height: 24px;
+            color: var(--muted-foreground);
+            text-decoration: none;
+            transition: color 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .social-link:hover {
+            color: var(--primary);
+        }
+
+        /* Projects Section */
+        #projects {
+            padding: 5rem 1.5rem;
+            background-color: rgba(245, 245, 245, 0.5);
+        }
+
+        .section-container {
+            max-width: 1280px;
+            margin: 0 auto;
+        }
+
+        h2 {
+            font-size: 2.25rem;
+            font-weight: bold;
+            margin-bottom: 3rem;
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .project-card {
+            background-color: var(--card);
+            border-radius: 0.5rem;
+            border: 1px solid var(--border);
+            overflow: hidden;
+            transition: all 0.3s;
+        }
+
+        .project-card:hover {
+            border-color: var(--primary);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        .project-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            transition: transform 0.3s;
+        }
+
+        .project-card:hover .project-image {
+            transform: scale(1.05);
+        }
+
+        .project-content {
+            padding: 1.5rem;
+        }
+
+        .project-title {
+            font-size: 1.25rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+
+        .project-description {
+            color: var(--muted-foreground);
+            font-size: 0.875rem;
+            margin-bottom: 1rem;
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        .tech-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .tech-tag {
+            padding: 0.25rem 0.75rem;
+            background-color: rgba(139, 92, 246, 0.1);
+            color: var(--primary);
+            font-size: 0.75rem;
+            border-radius: 9999px;
+        }
+
+        .project-link {
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 500;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: gap 0.3s;
+        }
+
+        .project-link:hover {
+            gap: 0.75rem;
+        }
+
+        /* Skills Section */
+        #skills {
+            padding: 5rem 1.5rem;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .skill-category h3 {
+            font-size: 1.125rem;
+            font-weight: bold;
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+
+        .skill-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .skill-list li {
+            color: var(--muted-foreground);
+            transition: color 0.3s;
+        }
+
+        .skill-list li:hover {
+            color: var(--foreground);
+        }
+
+        /* About Section */
+        #about {
+            padding: 5rem 1.5rem;
+            background-color: rgba(245, 245, 245, 0.5);
+        }
+
+        .about-container {
+            max-width: 56rem;
+            margin: 0 auto;
+        }
+
+        .about-text {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+            font-size: 1.125rem;
+            color: var(--muted-foreground);
+        }
+
+        .education-section {
+            padding-top: 1rem;
+        }
+
+        .education-section h3 {
+            font-size: 1.25rem;
+            font-weight: bold;
+            color: var(--foreground);
+            margin-bottom: 1rem;
+        }
+
+        .education-item {
+            margin-bottom: 1.5rem;
+        }
+
+        .education-item p:first-child {
+            font-weight: 600;
+            color: var(--foreground);
+        }
+
+        .education-item p:last-child {
+            font-size: 0.875rem;
+            color: var(--muted-foreground);
+        }
+
+        /* Contact Section */
+        #contact {
+            padding: 5rem 1.5rem;
+            text-align: center;
+        }
+
+        .contact-container {
+            max-width: 56rem;
+            margin: 0 auto;
+        }
+
+        .contact-description {
+            font-size: 1.125rem;
+            color: var(--muted-foreground);
+            margin-bottom: 2rem;
+        }
+
+        .contact-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            justify-content: center;
+            margin-bottom: 3rem;
+            flex-wrap: wrap;
+        }
+
+        @media (min-width: 640px) {
+            .contact-buttons {
+                flex-direction: row;
+            }
+        }
+
+        .contact-socials {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+        }
+
+        .contact-social-link {
+            width: 32px;
+            height: 32px;
+            color: var(--muted-foreground);
+            text-decoration: none;
+            transition: color 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .contact-social-link:hover {
+            color: var(--primary);
+        }
+
+        /* Footer */
+        footer {
+            border-top: 1px solid var(--border);
+            padding: 2rem 1.5rem;
+            text-align: center;
+            color: var(--muted-foreground);
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 640px) {
+            h1 {
+                font-size: 2.25rem;
+            }
+
+            h2 {
+                font-size: 1.875rem;
+            }
+
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .skills-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <div class="logo">YK</div>
+            <button class="menu-toggle" id="menuToggle">☰</button>
+            <ul class="nav-menu" id="navMenu">
+                <li><a onclick="scrollToSection('home')">Home</a></li>
+                <li><a onclick="scrollToSection('projects')">Projects</a></li>
+                <li><a onclick="scrollToSection('about')">About</a></li>
+                <li><a onclick="scrollToSection('contact')">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home">
+        <div class="hero-content">
+            <div>
+                <h1>Hi, I'm <span class="hero-title">Yosser Kechrid</span></h1>
+                <p class="hero-subtitle">Software Engineer & Web Developer</p>
+                <p class="hero-description">
+                    Motivated computer engineering student passionate about web and mobile application development. Seeking a 6-month end-of-studies internship to contribute technical expertise and expand knowledge in a dynamic professional environment.
+                </p>
+            </div>
+
+            <div class="hero-buttons">
+                <button class="btn-primary" onclick="scrollToSection('projects')">View My Work</button>
+                <button class="btn-outline" onclick="scrollToSection('contact')">Get In Touch</button>
+            </div>
+
+            <div class="hero-socials">
+                <a href="https://github.com" target="_blank" rel="noopener noreferrer" class="social-link" title="GitHub">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
+                    </svg>
+                </a>
+                <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" class="social-link" title="LinkedIn">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6zM2 9h4v12H2z"></path>
+                        <circle cx="4" cy="4" r="2"></circle>
+                    </svg>
+                </a>
+                <a href="mailto:kechrid.yosser29@gmail.com" class="social-link" title="Email">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <rect x="2" y="4" width="20" height="16" rx="2"></rect>
+                        <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path>
+                    </svg>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects">
+        <div class="section-container">
+            <h2>Featured Projects</h2>
+            <div class="projects-grid" id="projectsGrid"></div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills">
+        <div class="section-container">
+            <h2>Technical Skills</h2>
+            <div class="skills-grid" id="skillsGrid"></div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about">
+        <div class="about-container">
+            <h2>About Me</h2>
+            <div class="about-text">
+                <p>
+                    I'm a passionate software engineer currently pursuing my Computer Engineering degree with a specialization in Software Engineering at EPI Digital School. With a strong foundation in both web and mobile development, I've worked on diverse projects ranging from e-commerce platforms to educational management systems.
+                </p>
+
+                <p>
+                    My journey in tech started with a Bachelor's degree in Business Computing with a Business Intelligence specialization. This unique background gives me a perspective that combines technical excellence with business acumen, allowing me to build solutions that are both technically sound and commercially viable.
+                </p>
+
+                <p>
+                    I'm particularly interested in full-stack development with the MERN stack, and I'm always eager to learn new technologies and best practices. Currently, I'm seeking a 6-month end-of-studies internship where I can contribute my skills to real-world projects while continuing to grow as a developer.
+                </p>
+
+                <div class="education-section">
+                    <h3>Education</h3>
+                    <div class="education-item">
+                        <p>Computer Engineering Cycle – Software Engineering Specialization</p>
+                        <p>EPI Digital School, Sousse (Since September 2023)</p>
+                    </div>
+                    <div class="education-item">
+                        <p>Bachelor's Degree in Business Computing</p>
+                        <p>Higher Institute of Management of Sousse (2020 - 2023)</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact">
+        <div class="contact-container">
+            <h2>Let's Work Together</h2>
+            <p class="contact-description">
+                I'm always interested in hearing about new opportunities and projects. Feel free to reach out!
+            </p>
+
+            <div class="contact-buttons">
+                <a href="mailto:kechrid.yosser29@gmail.com" style="text-decoration: none;">
+                    <button class="btn-primary">Send me an Email</button>
+                </a>
+                <a href="tel:+21627156402" style="text-decoration: none;">
+                    <button class="btn-outline">Call Me</button>
+                </a>
+            </div>
+
+            <div class="contact-socials">
+                <a href="https://github.com" target="_blank" rel="noopener noreferrer" class="contact-social-link" title="GitHub">
+                    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
+                    </svg>
+                </a>
+                <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" class="contact-social-link" title="LinkedIn">
+                    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6zM2 9h4v12H2z"></path>
+                        <circle cx="4" cy="4" r="2"></circle>
+                    </svg>
+                </a>
+                <a href="mailto:kechrid.yosser29@gmail.com" class="contact-social-link" title="Email">
+                    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <rect x="2" y="4" width="20" height="16" rx="2"></rect>
+                        <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path>
+                    </svg>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>© 2025 Yosser Kechrid. All rights reserved. Open to remote work opportunities.</p>
+    </footer>
+
+    <script>
+        // Projects Data
+        const projects = [
+            {
+                title: "MERN Stack Orientation+",
+                description: "A comprehensive web platform that calculates student scores, filters universities based on preferences, and provides admin dashboards for managing faculties, students, and admission rules.",
+                technologies: ["MongoDB", "Express.js", "React.js", "Node.js"],
+                link: "#",
+                image: "/university-orientation-platform.jpg"
+            },
+            {
+                title: "TravelMate",
+                description: "A travel web application for generating personalized itineraries and connecting with other travelers to share experiences and recommendations.",
+                technologies: ["Java", "XML"],
+                link: "#",
+                image: "/travel-itinerary-app.jpg"
+            },
+            {
+                title: "TravelMatePocket",
+                description: "Mobile application for managing user posts with social network features, allowing travelers to share their experiences and connect with others.",
+                technologies: ["React.js", "Mobile"],
+                link: "#",
+                image: "/mobile-travel-social-app.jpg"
+            },
+            {
+                title: "Trackademia",
+                description: "A resource management application for storing academic links, articles, and files in one centralized location for easy access and organization.",
+                technologies: ["Angular", "Ruby"],
+                link: "#",
+                image: "/academic-resource-manager.jpg"
+            },
+            {
+                title: "BeTeck",
+                description: "An e-commerce website for managing IT products with comprehensive features for product management, invoices, and quotes generation.",
+                technologies: ["PHP", "E-commerce"],
+                link: "#",
+                image: "/ecommerce-it-products.jpg"
+            },
+            {
+                title: "Dental Clinic Dashboard",
+                description: "Patient and appointment management system designed for dental clinics to streamline operations and improve patient care.",
+                technologies: ["Dashboard", "Management"],
+                link: "#",
+                image: "/dental-clinic-management.jpg"
+            }
+        ];
+
+        // Skills Data
+        const skills = {
+            Languages: ["HTML", "CSS", "JavaScript", "Dart", "Java", "PHP", "SQL", "Python", "Ruby"],
+            Frameworks: ["MERN Stack", "Angular", "Spring Boot", "Flutter"],
+            Tools: ["VS Code", "IntelliJ", "Postman", "Git"],
+            Databases: ["MongoDB", "Firebase", "MySQL"]
+        };
+
+        // Render Projects
+        function renderProjects() {
+            const projectsGrid = document.getElementById('projectsGrid');
+            projectsGrid.innerHTML = projects.map(project => `
+                <div class="project-card">
+                    <img src="${project.image}" alt="${project.title}" class="project-image" onerror="this.src='/placeholder.svg?height=200&width=300'">
+                    <div class="project-content">
+                        <h3 class="project-title">${project.title}</h3>
+                        <p class="project-description">${project.description}</p>
+                        <div class="tech-tags">
+                            ${project.technologies.map(tech => `<span class="tech-tag">${tech}</span>`).join('')}
+                        </div>
+                        <a href="${project.link}" class="project-link">
+                            View Project <span>→</span>
+                        </a>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        // Render Skills
+        function renderSkills() {
+            const skillsGrid = document.getElementById('skillsGrid');
+            skillsGrid.innerHTML = Object.entries(skills).map(([category, items]) => `
+                <div class="skill-category">
+                    <h3>${category}</h3>
+                    <ul class="skill-list">
+                        ${items.map(skill => `<li>• ${skill}</li>`).join('')}
+                    </ul>
+                </div>
+            `).join('');
+        }
+
+        // Smooth Scroll
+        function scrollToSection(id) {
+            const element = document.getElementById(id);
+            if (element) {
+                element.scrollIntoView({ behavior: 'smooth' });
+                document.getElementById('navMenu').classList.remove('active');
+            }
+        }
+
+        // Mobile Menu Toggle
+        document.getElementById('menuToggle').addEventListener('click', function() {
+            document.getElementById('navMenu').classList.toggle('active');
+        });
+
+        // Close menu when clicking on a link
+        document.querySelectorAll('.nav-menu a').forEach(link => {
+            link.addEventListener('click', function() {
+                document.getElementById('navMenu').classList.remove('active');
+            });
+        });
+
+        // Initialize
+        renderProjects();
+        renderSkills();
+    </script>
+</body>
+</html>
