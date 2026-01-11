@@ -171,6 +171,37 @@ const projects = [
     technologies: ["PHP", "HTML","CSS"],
     images: ["./img/dentist.png","./img/cab1.jpg","./img/cab2.jpg","./img/cab3.jpg"],
     link: "#"
+  },
+
+  {
+    title: "Pawsome Adoption",
+    description: "A mobile application for pet adoption built with Flutter, Cloudinary, and Firebase. I had this project as an academic project",
+    details: {
+      overview: "Pet Adoption Mobile App is a comprehensive platform that connects pet lovers with animals in need of a home. Users can browse available pets, use advanced filters, send adoption requests, and even list their own animals for adoption. The app manages the entire adoption workflow including request approvals and adoption status tracking.",
+      roles: [
+        {
+          role: "User (Pet Seeker)",
+          desc: "Can create an account, login, browse the list of animals available for adoption, use filters to find the perfect pet, and send adoption requests for animals they like."
+        },
+        {
+          role: "User (Pet Owner)",
+          desc: "Can add their own animals to the platform, receive adoption requests from interested users, and accept requests to complete the adoption."
+        }
+      ],
+      highlights: [
+        "User authentication system with account creation and login",
+        "Browse and search animals with advanced filtering options",
+        "Send and manage adoption requests",
+        "Pet owner dashboard to manage owned animals",
+        "Accept adoption requests and update animal status",
+        "Adopted animals are automatically hidden from the adoption list",
+        "Image management using Cloudinary for optimal storage and delivery",
+        "Real-time database with Firebase for instant updates"
+      ]
+    },
+    technologies: ["Flutter", "Dart", "Firebase", "Cloudinary"],
+    images: ["./img/pa11.jpg","./img/pa1.jpg", "./img/pa2.jpg", "./img/pa3.jpg", "./img/pa4.jpg", "./img/pa5.jpg"],
+    link: "#"
   }
 ];
 
