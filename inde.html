@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yosser Kechrid - Software Engineer</title>
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="icon" type="image/svg+xml" href="./img/favicon.svg">
+
+</head>
+<body>
+    <div class="bg-animation"></div>
+
+    <nav>
+        <div class="nav-container">
+            <div class="nav-logo">YK</div>
+            <ul class="nav-links">
+                <li><a onclick="scrollToSection('home')">Home</a></li>
+                <li><a onclick="scrollToSection('projects')">Projects</a></li>
+                <li><a onclick="scrollToSection('skills')">Skills</a></li>
+                <li><a onclick="scrollToSection('about')">About</a></li>
+                <li><a onclick="scrollToSection('contact')">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <section class="hero" id="home">
+        <div class="hero-container">
+            <div class="hero-content">
+                <div class="hero-tag">Available for Internship</div>
+                <h1 class="hero-title">Hi, I'm <span>Yosser Kechrid</span></h1>
+                <p class="hero-subtitle">Software Engineer & Full-Stack Developer</p>
+                <p class="hero-description">
+                    Computer engineering student specializing in software development. Passionate about building innovative web and mobile applications with hands-on experience in both academic and professional projects.
+                </p>
+                <div class="hero-buttons">
+                    <button class="btn btn-primary" onclick="scrollToSection('projects')">View My Work</button>
+                    <button class="btn btn-secondary" onclick="scrollToSection('contact')">Get In Touch</button>
+                </div>
+            </div>
+            <div class="hero-visual">
+                <div class="code-window code-window-1">
+                    <div class="window-header">
+                        <div class="window-dot dot-red"></div>
+                        <div class="window-dot dot-yellow"></div>
+                        <div class="window-dot dot-green"></div>
+                    </div>
+                    <div class="code-line"><span class="code-keyword">const</span> developer = {</div>
+                    <div class="code-line">  name: <span class="code-string">"Yosser"</span>,</div>
+                    <div class="code-line">  skills: [<span class="code-string">"MERN"</span>, <span class="code-string">"Flutter"</span>]</div>
+                    <div class="code-line">}</div>
+                </div>
+                <div class="code-window code-window-2">
+                    <div class="window-header">
+                        <div class="window-dot dot-red"></div>
+                        <div class="window-dot dot-yellow"></div>
+                        <div class="window-dot dot-green"></div>
+                    </div>
+                    <div class="code-line"><span class="code-keyword">function</span> <span class="code-function">buildAmazing</span>() {</div>
+                    <div class="code-line">  <span class="code-keyword">return</span> <span class="code-string">"projects"</span>;</div>
+                    <div class="code-line">}</div>
+                </div>
+                <div class="code-window code-window-3">
+                    <div class="window-header">
+                        <div class="window-dot dot-red"></div>
+                        <div class="window-dot dot-yellow"></div>
+                        <div class="window-dot dot-green"></div>
+                    </div>
+                    <div class="code-line"><span class="code-keyword">import</span> passion</div>
+                    <div class="code-line"><span class="code-keyword">from</span> <span class="code-string">"coding"</span></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="projects" id="projects">
+        <div class="section-title">
+            <h2>Featured Projects</h2>
+            <p>Building innovative solutions with cutting-edge technologies</p>
+        </div>
+        <div class="projects-grid" id="projectsGrid"></div>
+    </section>
+
+    <section class="skills" id="skills">
+        <div class="section-title">
+            <h2>Technical Expertise</h2>
+            <p>Technologies and tools I work with</p>
+        </div>
+        <div class="skills-grid" id="skillsGrid"></div>
+    </section>
+
+    <section class="about" id="about">
+        <div class="section-title">
+            <h2>About Me</h2>
+            <p>My journey in software engineering</p>
+        </div>
+        <div class="about-content">
+            <div class="about-text">
+                <p>I'm a passionate software engineer pursuing a Computer Engineering degree with specialization in Software Engineering at EPI Digital School. My expertise spans across full-stack web development and mobile application development.</p>
+                <p>With a unique background combining technical skills and business intelligence, I bring a holistic approach to software development. I'm driven by the challenge of creating efficient, scalable solutions that make a real impact.</p>
+                <p>Currently seeking a 6-month end-of-studies internship to apply my skills in a professional environment and contribute to meaningful projects while continuing to grow as a developer.</p>
+            </div>
+            <div>
+                <h3 style="font-size: 1.8rem; margin-bottom: 1.5rem;">Education</h3>
+                <div class="education-card">
+                    <div class="education-title">Computer Engineering</div>
+                    <div class="education-school">EPI Digital School, Sousse</div>
+                    <div class="education-date">Since September 2023 - Present</div>
+                </div>
+                <div class="education-card">
+                    <div class="education-title">Bachelor's in Business Computing</div>
+                    <div class="education-school">Higher Institute of Management, Sousse</div>
+                    <div class="education-date">2020 - 2023</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+<section class="contact" id="contact">
+    <div class="contact-container">
+        <div class="section-title">
+            <h2>Let's Connect</h2>
+            <p>Ready to collaborate on your next project</p>
+        </div>
+
+        <p class="contact-text">
+            I'm always open to discussing new opportunities, interesting projects, or just having a chat about technology. Feel free to reach out!
+        </p>
+
+        <div class="contact-info">
+            <p><strong>Email:</strong> <a href="mailto:kechrid.yosser29@gmail.com">kechrid.yosser29@gmail.com</a></p>
+            <p><strong>Phone:</strong> <a href="tel:+21627156402">+216 27 156 402</a></p>
+            <p><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/yosser-kechrid-274135350/" target="_blank">Yosser Kechrid</a></p>
+        </div>
+    </div>
+</section>
+
+
+
+    <footer>
+        <p>© 2025 Yosser Kechrid. All rights reserved. Open to any work opportunities.</p>
+    </footer>
+
+
+    <script src="./js/service.js"></script>
+</body>
+</html>
